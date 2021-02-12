@@ -1,12 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 
+const PersonalInfo = () => {
+  const [firstName, setFirstName] = useState('');
+
+  return (
+    <View>
+      <Text>First Name</Text>
+      <TextInput
+        onChangeText={(text) => {
+          setFirstName(text)
+        }}
+        value={firstName}
+        onBlur={(event) => {
+          console.log(event)
+        }}
+      />
+    </View>
+
+  )
+}
+
+const FitnessInfo = () =>{
+  return (
+    <Text>FitnessInfo</Text>
+  )
+}
+const HealthInfo = () =>{
+  return (
+    <Text>HealthInfo</Text>
+  )
+}
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <PersonalInfo />
+    <FitnessInfo />
+    <HealthInfo />
     </View>
   );
 }

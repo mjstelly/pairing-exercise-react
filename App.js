@@ -1,52 +1,149 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
+import TextInput from "./components/TextInput";
+import Button from "./components/Button";
 
 const PersonalInfo = () => {
-  const [firstName, setFirstName] = useState('');
-
   return (
-    <View>
-      <Text>First Name</Text>
-      <TextInput
-        onChangeText={(text) => {
-          setFirstName(text)
-        }}
-        value={firstName}
-        onBlur={(event) => {
-          console.log(event)
-        }}
-      />
+    <View
+      style={{
+        // flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+      <Text style={{ color: "#223e4b", fontSize: 20, marginBottom: 16 }}>
+        Personal Info
+      </Text>
+      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
+        <TextInput
+          placeholder="Enter your first name"
+          autoCorrect="false"
+          autoCapitalize="words"
+          keyboardType="default"
+          keyboardAppearance="dark"
+          returnKeyType="next"
+          returnKeyLabel="next"
+        />
+      </View>
+      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
+        <TextInput
+          placeholder="Enter your last name"
+          autoCorrect="no"
+          autoCapitalize="words"
+          keyboardAppearance="dark"
+          returnKeyType="go"
+          returnKeyLabel="go"
+        />
+      </View>
+      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
+        <TextInput
+          placeholder="Enter your birthdate"
+          autoCorrect="no"
+          keyboardType="numeric"
+          keyboardAppearance="dark"
+          returnKeyType="go"
+          returnKeyLabel="go"
+        />
+      </View>
+      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
+        <TextInput
+          placeholder="Enter last 4 digits of your SSN"
+          keyboardType="numeric"
+          keyboardAppearance="dark"
+          returnKeyType="go"
+          returnKeyLabel="go"
+        />
+      </View>
     </View>
+  );
+};
 
-  )
-}
-
-const FitnessInfo = () =>{
+const FitnessInfo = () => {
   return (
-    <Text>FitnessInfo</Text>
-  )
-}
-const HealthInfo = () =>{
+    <View
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+      <Text style={{ color: "#223e4b", fontSize: 20, marginBottom: 16 }}>
+        Fitness Info
+      </Text>
+      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
+        <TextInput
+          placeholder="Enter your weight in pounds"
+          keyboardType="numeric"
+          keyboardAppearance="dark"
+          returnKeyType="next"
+          returnKeyLabel="next"
+        />
+      </View>
+      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
+        <TextInput
+          placeholder="Enter your height in inches"
+          keyboardType="numeric"
+          keyboardAppearance="dark"
+          returnKeyType="go"
+          returnKeyLabel="go"
+        />
+      </View>
+    </View>
+  );
+};
+const HealthInfo = () => {
   return (
-    <Text>HealthInfo</Text>
-  )
-}
+    <View
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+      <Text style={{ color: "#223e4b", fontSize: 20, marginBottom: 16 }}>
+        Health Info
+      </Text>
+      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
+        <TextInput
+          placeholder="What condition brings you here?"
+          keyboardType="default"
+          keyboardAppearance="dark"
+          returnKeyType="next"
+          returnKeyLabel="next"
+        />
+      </View>
+      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
+        <TextInput
+          placeholder="Any other concerns?"
+          keyboardType="default"
+          keyboardAppearance="dark"
+          returnKeyType="go"
+          returnKeyLabel="go"
+        />
+      </View>
+    </View>
+  );
+};
 export default function App() {
   return (
-    <View style={styles.container}>
-    <PersonalInfo />
-    <FitnessInfo />
-    <HealthInfo />
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <PersonalInfo />
+      <FitnessInfo />
+      <HealthInfo />
+      <Button label="Login" onPress={() => true} />
+      <StatusBar />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

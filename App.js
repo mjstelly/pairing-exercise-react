@@ -21,7 +21,7 @@ const PersonalInfo = () => {
       <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
         <TextInput
           placeholder="Enter your first name"
-          autoCorrect="false"
+          autoCorrect={false}
           autoCapitalize="words"
           keyboardType="default"
           keyboardAppearance="dark"
@@ -33,7 +33,7 @@ const PersonalInfo = () => {
       <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
         <TextInput
           placeholder="Enter your last name"
-          autoCorrect="false"
+          autoCorrect={false}
           autoCapitalize="words"
           keyboardAppearance="dark"
           returnKeyType="go"
@@ -159,7 +159,7 @@ export default function App() {
         >
           <TextInput
             placeholder="Enter your first name"
-            autoCorrect="false"
+            autoCorrect={false}
             autoCapitalize="words"
             keyboardType="default"
             keyboardAppearance="dark"
@@ -173,7 +173,7 @@ export default function App() {
         >
           <TextInput
             placeholder="Enter your last name"
-            autoCorrect="false"
+            autoCorrect={false}
             autoCapitalize="words"
             keyboardAppearance="dark"
             returnKeyType="go"
@@ -206,7 +206,7 @@ export default function App() {
           />
         </View>
       </View>
-      <Button label="Login" onPress={(handleSubmit) => true} />
+      <Button label="Submit" onPress={(handleSubmit) => true} />
       <StatusBar />
     </ScrollView>
   );

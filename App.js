@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import TextInput from "./components/TextInput";
 import Button from "./components/Button";
 
-const PersonalInfo = (props) => {
+const PersonalInfo = () => {
   return (
     <Formik
       initialValues={{

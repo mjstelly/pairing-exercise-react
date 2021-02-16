@@ -154,15 +154,6 @@ const HealthInfo = () => {
 };
 
 export default function App() {
-  // const { handleChange, handleSubmit, values } = useFormik({
-  //   initialValues: { firstName: "", lastName: "", birthDate: "", ssnLast4: "" },
-  //   onSubmit: (values) =>
-  //     alert(`First Name: ${values.firstName},
-  //   Last Name: ${values.lastName},
-  //   Birth Date: ${values.birthDate},
-  //   SSN Last4: ${values.ssnLast4}`),
-  // });
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <PersonalInfo />

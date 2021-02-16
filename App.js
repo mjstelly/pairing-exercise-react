@@ -1,67 +1,88 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-import { useFormik } from "formik";
+import { Formik } from "formik";
 import TextInput from "./components/TextInput";
 import Button from "./components/Button";
 
-const PersonalInfo = () => {
+const PersonalInfo = (props) => {
   return (
-    <View
-      style={{
-        // flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
+    <Formik
+      initialValues={{
+        firstName: "",
+        lastName: "",
+        birthDate: "",
+        ssnLast4: "",
       }}
+      onSubmit={(values) => console.log(values)}
     >
-      <Text style={{ color: "#223e4b", fontSize: 20, marginBottom: 16 }}>
-        Personal Info
-      </Text>
-      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
-        <TextInput
-          placeholder="Enter your first name"
-          autoCorrect={false}
-          autoCapitalize="words"
-          keyboardType="default"
-          keyboardAppearance="dark"
-          returnKeyType="next"
-          returnKeyLabel="next"
-          onChangeText={handleChange("firstName")}
-        />
-      </View>
-      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
-        <TextInput
-          placeholder="Enter your last name"
-          autoCorrect={false}
-          autoCapitalize="words"
-          keyboardAppearance="dark"
-          returnKeyType="go"
-          returnKeyLabel="go"
-          onChangeText={handleChange("lastName")}
-        />
-      </View>
-      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
-        <TextInput
-          placeholder="Enter your birthdate"
-          keyboardType="numeric"
-          keyboardAppearance="dark"
-          returnKeyType="go"
-          returnKeyLabel="go"
-          onChangeText={handleChange("birthDate")}
-        />
-      </View>
-      <View style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}>
-        <TextInput
-          placeholder="Enter last 4 digits of your SSN"
-          keyboardType="numeric"
-          keyboardAppearance="dark"
-          returnKeyType="go"
-          returnKeyLabel="go"
-          onChangeText={handleChange("ssnLast4")}
-        />
-      </View>
-    </View>
+      {({ handleChange, handleBlur, handleSubmit, values }) => (
+        <View
+          style={{
+            // flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <Text style={{ color: "#223e4b", fontSize: 20, marginBottom: 16 }}>
+            Personal Info
+          </Text>
+          <View
+            style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}
+          >
+            <TextInput
+              placeholder="Enter your first name"
+              autoCorrect={false}
+              autoCapitalize="words"
+              keyboardType="default"
+              keyboardAppearance="dark"
+              returnKeyType="next"
+              returnKeyLabel="next"
+              onChangeText={handleChange("firstName")}
+            />
+          </View>
+          <View
+            style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}
+          >
+            <TextInput
+              placeholder="Enter your last name"
+              autoCorrect={false}
+              autoCapitalize="words"
+              keyboardAppearance="dark"
+              returnKeyType="go"
+              returnKeyLabel="go"
+              onChangeText={handleChange("lastName")}
+            />
+          </View>
+          <View
+            style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}
+          >
+            <TextInput
+              placeholder="Enter your birthdate"
+              keyboardType="numeric"
+              keyboardAppearance="dark"
+              returnKeyType="go"
+              returnKeyLabel="go"
+              onChangeText={handleChange("birthDate")}
+            />
+          </View>
+          <View
+            style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}
+          >
+            <TextInput
+              placeholder="Enter last 4 digits of your SSN"
+              keyboardType="numeric"
+              keyboardAppearance="dark"
+              returnKeyType="go"
+              returnKeyLabel="go"
+              onChangeText={handleChange("ssnLast4")}
+            />
+          </View>
+          <Button onPress={handleSubmit} label="Submit" />
+        </View>
+      )}
+    </Formik>
   );
 };
 
@@ -133,80 +154,18 @@ const HealthInfo = () => {
 };
 
 export default function App() {
-  const { handleChange, handleSubmit, values } = useFormik({
-    initialValues: { firstName: "", lastName: "", birthDate: "", ssnLast4: "" },
-    onSubmit: (values) =>
-      alert(`First Name: ${values.firstName}, 
-    Last Name: ${values.lastName},
-    Birth Date: ${values.birthDate},
-    SSN Last4: ${values.ssnLast4}`),
-  });
+  // const { handleChange, handleSubmit, values } = useFormik({
+  //   initialValues: { firstName: "", lastName: "", birthDate: "", ssnLast4: "" },
+  //   onSubmit: (values) =>
+  //     alert(`First Name: ${values.firstName},
+  //   Last Name: ${values.lastName},
+  //   Birth Date: ${values.birthDate},
+  //   SSN Last4: ${values.ssnLast4}`),
+  // });
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View
-        style={{
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        <Text style={{ color: "#223e4b", fontSize: 20, marginBottom: 16 }}>
-          Personal Info
-        </Text>
-        <View
-          style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}
-        >
-          <TextInput
-            placeholder="Enter your first name"
-            autoCorrect={false}
-            autoCapitalize="words"
-            keyboardType="default"
-            keyboardAppearance="dark"
-            returnKeyType="next"
-            returnKeyLabel="next"
-            onChangeText={handleChange("firstName")}
-          />
-        </View>
-        <View
-          style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}
-        >
-          <TextInput
-            placeholder="Enter your last name"
-            autoCorrect={false}
-            autoCapitalize="words"
-            keyboardAppearance="dark"
-            returnKeyType="go"
-            returnKeyLabel="go"
-            onChangeText={handleChange("lastName")}
-          />
-        </View>
-        <View
-          style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}
-        >
-          <TextInput
-            placeholder="Enter your birthdate"
-            keyboardType="numeric"
-            keyboardAppearance="dark"
-            returnKeyType="go"
-            returnKeyLabel="go"
-            onChangeText={handleChange("birthDate")}
-          />
-        </View>
-        <View
-          style={{ paddingHorizontal: 32, marginBottom: 16, width: "100%" }}
-        >
-          <TextInput
-            placeholder="Enter last 4 digits of your SSN"
-            keyboardType="numeric"
-            keyboardAppearance="dark"
-            returnKeyType="go"
-            returnKeyLabel="go"
-            onChangeText={handleChange("ssnLast4")}
-          />
-        </View>
-      </View>
-      <Button label="Submit" onPress={(handleSubmit) => true} />
+      <PersonalInfo />
       <StatusBar />
     </ScrollView>
   );
